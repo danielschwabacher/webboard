@@ -1,0 +1,9 @@
+.draggable{
+    height: 50px;
+    width: 50px;
+    color: white
+}
+
+.element-led{
+    background-color: black;
+}
