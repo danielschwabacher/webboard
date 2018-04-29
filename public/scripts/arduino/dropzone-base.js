@@ -3,8 +3,7 @@ function create_hook(target){
     var block_type = target.classList[3]
     switch (block_type){
         case "arduino-led-toggle":
-            console.log("Dealing with LED toggle")
-            target.led_param = LEDPIN
+            target.led_param = prompt("Which pin controls this LED")
             target.addEventListener('click', led_toggle)
     }
 }
@@ -36,6 +35,7 @@ interact('.bp-area').dropzone({
       event.relatedTarget.classList.remove('can-drop');
       event.relatedTarget.classList.add('was-dropped');
       create_hook(event.relatedTarget)
+      event.relatedTarget.classList.remove('arduino-element-block')
     }
   });
   
