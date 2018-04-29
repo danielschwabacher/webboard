@@ -1,0 +1,25 @@
+.ui.grid {
+  height: 80%;
+}
+
+.bp-area {
+  background-color: #aaa;
+}
+
+.element-area {
+  background-color: #7583ee;
+}
+
+.arduino-element-block {
+  background-color: #45464f;
+}
+
+.can-drop {
+  background-color: lightgreen !important;
+}
+
+.was-dropped {
+  background-color: lightblue !important;
+}
+
+/*# sourceMappingURL=../css/arduino-elements.css.map */

@@ -1,22 +1,7 @@
 var socket = io.connect('http://localhost:' + 3000);
 
-window.addEventListener('load', function () {
-
-  var hello_button = document.getElementById("helloButton");
-
-  socket.on('connect', () => {
-    console.log("Connected to socket: " + socket.id);
-  });
-
-  hello_button.addEventListener("click", () => {
-    socket.emit("clicked");
-  });
-
-});
-
-
 // target elements with the "draggable" class
-interact('.draggable')
+interact('.arduino-element-block')
   .draggable({
     // enable inertial throwing
     inertia: true,
@@ -24,8 +9,24 @@ interact('.draggable')
     onmove: dragMoveListener,
 
     // call this function on every dragend event
-    onend: function (event) {}
-  });
+    onend: function (event) {
+
+    }
+});
+
+function create_hook(bt){
+}
+
+
+function add_blueprint(target){
+    console.log('block added');
+    console.log(target);
+    var block_type = target.classList[3]
+    //create_hook(block_type);
+    target.addEventListener('click', function(){
+        socket.emit("clicked");
+    });
+}
 
 function dragMoveListener(event) {
   var target = event.target,
@@ -44,37 +45,35 @@ function dragMoveListener(event) {
 }
 
 // enable draggables to be dropped into this
-interact('.dropzone').dropzone({
+interact('.bp-area').dropzone({
   // only accept elements matching this CSS selector
-  accept: '.arudino-element',
+  accept: '.arduino-element-block',
+  
   // Require a 75% element overlap for a drop to be possible
-  overlap: 0.75,
-
-  // listen for drop related events:
+  overlap: 0.80,
 
   ondropactivate: function (event) {
     // add active dropzone feedback
-    event.target.classList.add('drop-active');
+    event.relatedTarget.classList.remove('was-dropped');
   },
+
   ondragenter: function (event) {
-    var draggableElement = event.relatedTarget,
-      dropzoneElement = event.target;
-    
-      // feedback the possibility of a drop
-    dropzoneElement.classList.add('drop-target');
+    var draggableElement = event.relatedTarget
+    var dropzoneElement = event.target;
+    // feedback the possibility of a drop
     draggableElement.classList.add('can-drop');
   },
   ondragleave: function (event) {
     // remove the drop feedback style
-    event.target.classList.remove('drop-target');
     event.relatedTarget.classList.remove('can-drop');
   },
-  ondrop: function (event) {
-
+  ondrop: function(event){
+    event.relatedTarget.classList.remove('can-drop');
+    event.relatedTarget.classList.add('was-dropped');
+    add_blueprint(event.relatedTarget)
   },
   ondropdeactivate: function (event) {
-    // remove active dropzone feedback
-    event.target.classList.remove('drop-active');
-    event.target.classList.remove('drop-target');
+      event.relatedTarget.classList.remove('can-drop');
+      event.relatedTarget.classList.add('was-dropped');
   }
 });

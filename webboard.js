@@ -10,11 +10,15 @@ app.use(express.static('public/'));
 server.listen(PORT)
 
 app.get('/', (req, res) => res.sendfile(__dirname + '/public/index.html'));
-app.get('/blah', (req,res) => res.send("Blah"));
 
 io.on('connect', function (socket) {
     socket.on('clicked', () => {
         console.log("clicked button, on socket: " + socket.id);
+    });
+
+    socket.on('arduino-block-emit', () => {
+        console.log("Recieved arduino block event");
+        console.log()
     });
 });
 
