@@ -9,6 +9,7 @@ interact('.arduino-element-block')
     onmove: onmove_translater
 });
 
+
 function onmove_translater(event) {
     if (!event.target.dragOrigin) {
         var clone = event.target.cloneNode(true);
@@ -16,11 +17,9 @@ function onmove_translater(event) {
         event.interaction.element = clone;
         event.interaction.dragging = false;
         dragTarget = clone;
+        // dragTarget.setAttribute('data-x', pos.left);
+        // dragTarget.setAttribute('data-y', pos.top);
         document.body.appendChild(clone);
-        dragTarget.setAttribute('data-x', 300);
-        dragTarget.setAttribute('data-y', -450);
-        console.log("Clone x is: " + dragTarget.getAttribute('data-x'))
-        console.log("Clone y is: " + dragTarget.getAttribute('data-y'))
     } 
     else {
         dragTarget = event.target;
@@ -34,7 +33,6 @@ function onmove_translater(event) {
     dragTarget.style.webkitTransform =
     dragTarget.style.transform =
       'translate(' + x + 'px, ' + y + 'px)';
-  
     // update the posiion attributes
     dragTarget.setAttribute('data-x', x);
     dragTarget.setAttribute('data-y', y);

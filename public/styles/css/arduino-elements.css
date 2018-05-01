@@ -20,6 +20,14 @@
 
 .was-dropped {
   background-color: lightblue !important;
+  color: black !important;
+}
+
+.arduino-data-reader {
+  height: 100px;
+  width: 150px;
+  color: white;
+  text-align: center;
 }
 
 /*# sourceMappingURL=../css/arduino-elements.css.map */
