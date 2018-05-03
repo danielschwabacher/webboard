@@ -4,10 +4,10 @@ function create_hook(target){
     console.log(block_type);
     switch (block_type){
         case "arduino-led-toggle":
-            target.led_param = prompt("Which pin controls this LED")
+            // target.led_param = prompt("Which pin controls this LED")
             target.addEventListener('click', led_toggle)
         case "arduino-data-reader":
-            target.data_read_pin = prompt("Which pin to read data from");
+            // target.data_read_pin = prompt("Which pin to read data from");
             target.addEventListener('click', toggle_read)
     }
 }
@@ -21,27 +21,3 @@ function remove_hook(target){
             target.removeEventListener('click', read_toggle)
     }
 }
-
-// enable draggables to be dropped into this
-interact('.bp-area').dropzone({
-    // only accept elements matching this CSS selector
-    accept: '.arduino-element-block',
-    // Require a 75% element overlap for a drop to be possible
-    overlap: 0.80,
-    ondragenter: function (event) {
-        event.relatedTarget.classList.add('can-drop');
-        event.relatedTarget.classList.remove('was-dropped');
-    },
-    ondragleave: function (event) {
-      event.relatedTarget.classList.remove('was-dropped');
-      event.relatedTarget.classList.remove('can-drop');
-      remove_hook(event.relatedTarget)
-    },
-    ondrop: function(event){
-      event.relatedTarget.classList.remove('can-drop');
-      event.relatedTarget.classList.add('was-dropped');
-      create_hook(event.relatedTarget)
-      event.relatedTarget.classList.remove('arduino-element-block')
-    }
-  });
-  
