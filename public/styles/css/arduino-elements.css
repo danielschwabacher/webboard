@@ -12,22 +12,26 @@
 
 .arduino-element-block {
   background-color: #45464f;
-}
-
-.can-drop {
-  background-color: lightgreen !important;
-}
-
-.was-dropped {
-  background-color: lightblue !important;
-  color: black !important;
-}
-
-.arduino-data-reader {
   height: 100px;
-  width: 150px;
+  width: 25%;
   color: white;
   text-align: center;
+  border: 5px;
+  border-color: white;
+  margin: 12px;
+  display: inline-block;
+}
+
+#not-dropped {
+  display: none;
+}
+
+#was-dropped {
+  background-color: #4bb777 !important;
+  position: relative;
+  display: block;
+  margin: 12;
+  height: 20%;
 }
 
 /*# sourceMappingURL=../css/arduino-elements.css.map */

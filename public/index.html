@@ -1,6 +1,6 @@
 <html>
     <head>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>          
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>
         <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
         <script src="./semantic-ui/dist/semantic.min.js"></script>
@@ -9,33 +9,46 @@
         <script src="./scripts/arduino/arduino-element-base.js"></script>
         <script src="./scripts/arduino/arduino-led-toggle.js"></script>
         <script src="./scripts/arduino/arduino-data-reader.js"></script>
-        <link rel="stylesheet" type="text/css" href="./semantic-ui/dist/semantic.min.css">    
+        <link rel="stylesheet" type="text/css" href="./semantic-ui/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="./styles/css/arduino-elements.css">
         <link rel="stylesheet" type="text/css" href="./styles/css/dragula.css">
         <title>
             WebBoard
         </title>
     </head>
+
     <body>
-          
-        <div class="ui huge teal center aligned header">Welcome to WebBoard</div>        
+        <div class="ui huge teal center aligned header">
+            Welcome to WebBoard
+        </div>
         <div class="ui grid">
-            <div class="twelve wide column" id=bp-area>
-                <div class="ui large black center aligned header">Working Area</div>       
+            <div class="twelve wide column" id="bp-area">
+                <div class="ui large black center aligned header">
+                    Working Area
+                </div>
             </div>
-            <div class="four wide column area" id=element-area>
-                <div class="ui large black center aligned header">Elements</div>        
-                <button class="ui button arduino-element-block arduino-led-toggle">
+            <div class="four wide column" id="element-area">
+                <div class="ui large black center aligned header">
+                    Elements
+                </div>
+                <div class="arduino-element-block arduino-led-toggle">
                     LED Toggle
-                </button>
+                    <span id="not-dropped">Edit Pin</span>
+                    <span id="not-dropped">Delete</span>
+                </div>
                 <div class="arduino-element-block arduino-data-reader">
                     Data Reader
+                    <span id="not-dropped">Edit Pin</span>
+                    <span id="not-dropped">Delete</span>
+                </div>
+                <div class="arduino-element-block arduino-data-reader">
+                    General Purpose
+                    <span id="not-dropped">Edit Pin</span>
+                    <span id="not-dropped">Delete</span>
                 </div>
             </div>
         </div>
         <br>
-        <br>
-        User notes: In this version, elements cannot be moved around.
+        <br> User notes: In this version, elements cannot be moved around.
     </body>
 </html>
-
