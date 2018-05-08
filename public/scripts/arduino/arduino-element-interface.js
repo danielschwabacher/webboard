@@ -10,13 +10,6 @@ class ArduinoElement{
         this.run_command = "generic"
         this.show_spans();
     }
-    set set_pin_id(pn){
-        this.pin_number = pn;
-    }
-    prompt_pin_id(){
-        var pn = prompt("Which pin number?");
-        return pn
-    }
     generate_element_code(){
         var element_code = Math.floor(Math.random() * Math.floor(100000));
         return element_code;
@@ -42,8 +35,8 @@ class ArduinoElement{
                 this.delete();
             }
             if (innerText == "Edit Pin"){
-                var new_pin_num = this.prompt_pin_id()
-                this.pin_number = new_pin_num;
+                var pn = prompt("Which pin number?");
+                this.pin_number = pn;
             }
             if (innerText == "Toggle Pin"){
                 this.run_action();

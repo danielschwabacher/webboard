@@ -12,7 +12,7 @@ server.listen(PORT)
 
 app.get('/', (req, res) => res.sendfile(__dirname + '/public/index.html'));
 
-var USING_BOARD = false;
+var USING_BOARD = true;
 
 if (USING_BOARD){
     var five = require('johnny-five');
@@ -23,8 +23,8 @@ if (USING_BOARD){
         io.on('connect', function (socket) {
             console.log("Connected to client.")
             socket.on('toggle-led', (pin_num) => {
-                console.log("Toggling arduino led: " + pin_num);
                 led.pin = pin_num
+                console.log("Pin num is: " + pin_num);
                 led.toggle();
             });
         });
