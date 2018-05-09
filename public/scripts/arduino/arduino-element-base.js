@@ -10,7 +10,10 @@ window.addEventListener('load', function(){
         },
         accepts: function (el, target) {
             return target == document.getElementById('bp-area')
-        }
+        },
+        moves: function (el, source, handle, sibling) {
+            return source != document.getElementById('bp-area')
+        },
     }).on('drop', function(el, container, source){
         var element_type = el.classList[1];
         if (element_type == "arduino-led-toggle"){

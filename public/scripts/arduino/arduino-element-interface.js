@@ -4,19 +4,13 @@ const NUMBER_SPANS = 3;
 
 class ArduinoElement{
     constructor(elem){
-        this.pin_number = 5;
+        this.pin_number = 0;
         this.element_code = this.generate_element_code();
         this.element = elem
         this.run_command = "generic"
         this.block_type = "Base"
         this.show_spans();
-        /*
-            document.createEvent("pin_changed")
-            this.element.addEventListener('set_pin_id', ()=>{
-                document.getElementById("pin_number").innerText = this.pin_number
-            });
-        */
-        // create the event
+        this.add_span_event_listeners();
         this.element.addEventListener("pin_changed", () => {
             this.element.getElementsByClassName("pin_number")[0].innerText = this.pin_number
         });
@@ -36,7 +30,6 @@ class ArduinoElement{
             spans[i].classList += ' was-dropped'
             i++
         }
-        this.add_span_event_listeners();
         return;
     }
     set_pin_id(){
