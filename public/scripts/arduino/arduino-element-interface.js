@@ -1,7 +1,7 @@
 var socket = io.connect('http://localhost:' + 3000);
 
 const NUMBER_SPANS = 3;
-var blagd
+
 class ArduinoElement{
     constructor(elem){
         this.pin_number = 5;
@@ -10,7 +10,17 @@ class ArduinoElement{
         this.run_command = "generic"
         this.block_type = "Base"
         this.show_spans();
-        this.set_pin_ui()
+        /*
+            document.createEvent("pin_changed")
+            this.element.addEventListener('set_pin_id', ()=>{
+                document.getElementById("pin_number").innerText = this.pin_number
+            });
+        */
+        // create the event
+        this.element.addEventListener("pin_changed", () => {
+            this.element.getElementsByClassName("pin_number")[0].innerText = this.pin_number
+        });
+
     }
     generate_element_code(){
         var element_code = Math.floor(Math.random() * Math.floor(100000));
@@ -29,13 +39,21 @@ class ArduinoElement{
         this.add_span_event_listeners();
         return;
     }
-    set_pin_ui(){
-        document.getElementById("pin_number").innerText = this.pin_number
+    set_pin_id(){
+        var pn = prompt("Which pin number?");
+        if (pn != null && pn != undefined){
+            this.pin_number = pn;
+            // create and dispatch the event
+            var pin_changed_event = new CustomEvent("pin_changed", {});
+            this.element.dispatchEvent(pin_changed_event);
+        }
+        else{
+            console.log("Invalid pin number")
+        }
     }
     add_span_event_listeners() {
         this.element.getElementsByClassName('edit-pin')[0].addEventListener("click", () => {
-            var pn = prompt("Which pin number?");
-            this.pin_number = pn;
+            this.set_pin_id();
         });
         this.element.getElementsByClassName('run-pin')[0].addEventListener("click", () => {
             this.run_action();
