@@ -12,7 +12,7 @@ server.listen(PORT)
 
 app.get('/', (req, res) => res.sendfile(__dirname + '/public/index.html'));
 
-var USING_BOARD = true;
+var USING_BOARD = false;
 
 if (USING_BOARD){
     var five = require('johnny-five');

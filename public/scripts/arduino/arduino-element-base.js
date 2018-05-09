@@ -16,6 +16,9 @@ window.addEventListener('load', function(){
         if (element_type == "arduino-led-toggle"){
             new_toggle = new LedToggle(el);
         }
+        if (element_type == "arduino-data-reader"){
+            new_data_reader = new DataReader(el);
+        }
     });
 });
 

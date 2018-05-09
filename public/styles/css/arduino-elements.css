@@ -22,11 +22,11 @@
   display: inline-block;
 }
 
-#not-dropped {
+.not-dropped {
   display: none;
 }
 
-#was-dropped {
+.was-dropped {
   background-color: #4bb777 !important;
   position: relative;
   display: block;
