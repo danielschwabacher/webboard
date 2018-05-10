@@ -1,18 +1,16 @@
 {
   "name": "webboard",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Browser based GUI for electronics prototyping.",
   "main": "webboard.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "dependencies": { 
     "express": "^4.16.3",
-    "gulp": "^3.9.1",
-    "interactjs": "^1.3.3",
-    "johnny-five": "^0.14.3",
-    "semantic-ui": "^2.3.1"
+    "socket.io": "latest",
+    "johnny-five": "^0.14.3" 
   }
 }
