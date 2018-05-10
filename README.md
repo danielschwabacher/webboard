@@ -28,16 +28,6 @@ In order to get a WebBoard instance up and running, do one of the following:
 
 4.) View the WebBoard interface
 - Point your web browser to ```http://localhost:3000```
----
-#### Method 2: via npm
-1.) Get the WebBoard package
-- ```npm install webboard```
-
-2.) Run WebBoard
-- ```node webboard.js```
-
-3.) View the WebBoard interface
-- Point your web browser to ```http://localhost:3000```
 
 Contributing
 ---------
