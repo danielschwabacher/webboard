@@ -37,7 +37,7 @@ else{
         socket.on('toggle-led', (pin_num) => {
             console.log("Toggling arduino led: " + pin_num);
         });
-        socket.on('read', (pin_num) => {
+        socket.on('read-data', (pin_num) => {
             console.log("Reading info from pin: " + pin_num);
         });
     });

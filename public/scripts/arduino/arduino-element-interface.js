@@ -1,7 +1,5 @@
 var socket = io.connect('http://localhost:' + 3000);
 
-const NUMBER_SPANS = 3;
-
 class ArduinoElement{
     constructor(elem){
         this.pin_number = 0;
@@ -9,12 +7,15 @@ class ArduinoElement{
         this.element = elem
         this.run_command = "generic"
         this.block_type = "Base"
+        this.number_of_spans = 3;
         this.show_spans();
         this.add_span_event_listeners();
+        this.setup_event_listeners();
+    }
+    setup_event_listeners(){
         this.element.addEventListener("pin_changed", () => {
             this.element.getElementsByClassName("pin_number")[0].innerText = this.pin_number
         });
-
     }
     generate_element_code(){
         var element_code = Math.floor(Math.random() * Math.floor(100000));
@@ -23,7 +24,7 @@ class ArduinoElement{
     show_spans() {
         var spans = this.element.getElementsByTagName('span')
         var i = 0;
-        while (i < NUMBER_SPANS){
+        while (i < this.number_of_spans){
             if (spans[i].classList.contains('not-dropped')){
                 spans[i].removeAttribute('not-dropped');
             }
