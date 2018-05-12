@@ -7,7 +7,7 @@ class ArduinoElement{
         this.element = elem
         this.run_command = "generic"
         this.block_type = "Base"
-        this.number_of_spans = 3;
+        this.number_of_spans = 1;
         this.show_spans();
         this.add_span_event_listeners();
         this.setup_event_listeners();
@@ -46,14 +46,8 @@ class ArduinoElement{
         }
     }
     add_span_event_listeners() {
-        this.element.getElementsByClassName('edit-pin')[0].addEventListener("click", () => {
+        this.element.getElementsByClassName('pin-settings')[0].addEventListener("click", () => {
             this.set_pin_id();
-        });
-        this.element.getElementsByClassName('run-pin')[0].addEventListener("click", () => {
-            this.run_action();
-        });
-        this.element.getElementsByClassName('delete-block')[0].addEventListener("click", () => {
-            this.delete();
         });
     }
     delete(){

@@ -1,4 +1,4 @@
 {
     "verbose": true,
-    "ignore": ["node_modules/", "semantic/*", "public/semantic-ui/*"]
+    "ignore": ["node_modules/", "semantic/*", "public/semantic-ui/*", "public/styles/css/fontawesome/*"]
 }
