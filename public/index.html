@@ -1,63 +1,92 @@
 <html>
-    <head>
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
-        <script src="./semantic-ui/dist/semantic.min.js"></script>
-        <script src="./scripts/index.js"></script>
-        <script src="./scripts/arduino/arduino-element-interface.js"></script>
-        <script src="./scripts/arduino/arduino-element-base.js"></script>
-        <script src="./scripts/arduino/arduino-led-toggle.js"></script>
-        <script src="./scripts/arduino/arduino-data-reader.js"></script>
-        <link rel="stylesheet" type="text/css" href="./semantic-ui/dist/semantic.min.css">
-        <link rel="stylesheet" type="text/css" href="./styles/css/arduino-elements.css">
-        <link rel="stylesheet" type="text/css" href="./styles/css/dragula.css">                
-        <link rel="stylesheet" type="text/css" href="./styles/css/fontawesome/web-fonts/css/fa-solid.min.css">
-        <link rel="stylesheet" type="text/css" href="./styles/css/fontawesome/web-fonts/css/fontawesome.min.css"> 
-        <title>
-            WebBoard
-        </title>
-    </head>
 
-    <body>
-        <div class="ui huge teal center aligned header">
-            Welcome to WebBoard
+<head>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
+    <script src="./semantic-ui/dist/semantic.min.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/arduino/arduino-element-interface.js"></script>
+    <script src="./scripts/arduino/arduino-element-base.js"></script>
+    <script src="./scripts/arduino/arduino-led-toggle.js"></script>
+    <script src="./scripts/arduino/arduino-data-reader.js"></script>
+    <script src="./scripts/arduino/modal-controllers.js"></script>
+    <link rel="stylesheet" type="text/css" href="./semantic-ui/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./styles/css/arduino-elements.css">
+    <link rel="stylesheet" type="text/css" href="./styles/css/dragula.css">
+    <link rel="stylesheet" type="text/css" href="./styles/css/fontawesome/web-fonts/css/fa-solid.min.css">
+    <link rel="stylesheet" type="text/css" href="./styles/css/fontawesome/web-fonts/css/fontawesome.min.css">
+    <title>
+        WebBoard
+    </title>
+</head>
+
+<body>
+    <div class="ui modal Base">
+        <i class="close icon"></i>
+        <div class="header">
+            Base Block Settings
         </div>
-        <div class="ui grid">
-            <div class="twelve wide column" id="bp-area">
-                <div class="ui large black center aligned header">
-                    Working Area
-                </div>
+        <div class="actions">
+            <div class="ui button">Cancel</div>
+            <div class="ui button">OK</div>
+        </div>
+    </div>
+    <div class="ui modal led-toggle">
+            <i class="close icon"></i>
+            <div class="header">
+                Toggle Block Settings
             </div>
-            <div class="four wide column" id="element-area">
-                <div class="ui large black center aligned header">
-                    Elements
-                </div>
-                <div class="arduino-element-block arduino-led-toggle">
-                    LED Toggle
-                    <span class="not-dropped pin-settings">Pin Settings
-                            <i class="fas fa-cog"></i>
-                    </span>
-                </div>
-                <div class="arduino-element-block arduino-data-reader">
-                    Data Reader
-                    <span class="not-dropped edit-pin">Edit Pin</span>
-                    <span class="not-dropped run-pin">STATUS:
-                        <i class="pin_number">0</i>
-                    </span>
-                    <span class="not-dropped delete-block">Delete</span>
-                </div>
-                <div class="arduino-element-block arduino-data-reader">
-                    General Purpose
-                    <span class="not-dropped edit-pin">Edit Pin</span>
-                    <span class="not-dropped run-pin">Run pin: 
-                        <i class="pin_number">0</i>
-                    </span>
-                    <span class="not-dropped delete-block">Delete</span>
-                </div>
+            <div class="actions">
+                <div class="ui button">Cancel</div>
+                <div class="ui button">OK</div>
+            </div>
+    </div>
+    <div class="ui huge teal center aligned header">
+        Welcome to WebBoard
+    </div>
+    <div class="ui grid">
+        <div class="twelve wide column" id="bp-area">
+            <div class="ui large black center aligned header">
+                Working Area
             </div>
         </div>
-        <br>
-        <br> User notes: In this version, elements cannot be moved around.
-    </body>
+        <div class="four wide column" id="element-area">
+            <div class="ui large black center aligned header">
+                Elements
+            </div>
+            <div class="arduino-element-block arduino-led-toggle">
+                LED Toggle
+                <span class="not-dropped pin-settings">Pin Settings
+                    <i class="fas fa-cog"></i>
+                </span>
+                <span class="not-dropped run-pin">Run Pin
+                    <i class="fas fa-bolt"></i>                        
+                </span>
+            </div>
+            <div class="arduino-element-block arduino-data-reader">
+                Data Reader
+                <span class="not-dropped pin-settings">Pin Settings
+                    <i class="fas fa-cog"></i>
+                </span>
+                <span class="not-dropped run-pin">Run Pin
+                    <i class="fas fa-bolt"></i>                        
+                </span>
+            </div>
+            <div class="arduino-element-block arduino-data-reader">
+                GPIO
+                <span class="not-dropped pin-settings">Pin Settings
+                    <i class="fas fa-cog"></i>
+                </span>
+                <span class="not-dropped run-pin">Run Pin
+                     <i class="fas fa-bolt"></i>                        
+                </span>
+            </div>
+        </div>
+    </div>
+    </div>
+    <br>
+    <br> User notes: In this version, elements cannot be moved around.
+</body>
+
 </html>

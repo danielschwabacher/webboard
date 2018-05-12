@@ -1,30 +1,24 @@
 var socket = io.connect('http://localhost:' + 3000);
-
 class ArduinoElement{
     constructor(elem){
         this.pin_number = 0;
         this.element_code = this.generate_element_code();
         this.element = elem
-        this.run_command = "generic"
+        this.run_command = "generic-run"
         this.block_type = "Base"
-        this.number_of_spans = 1;
-        this.show_spans();
+        this.grid_blocks = 2;
+        this.modal_controller = new ModalController(this.element_code, this.block_type);
+        this.add_spans();
         this.add_span_event_listeners();
-        this.setup_event_listeners();
-    }
-    setup_event_listeners(){
-        this.element.addEventListener("pin_changed", () => {
-            this.element.getElementsByClassName("pin_number")[0].innerText = this.pin_number
-        });
     }
     generate_element_code(){
         var element_code = Math.floor(Math.random() * Math.floor(100000));
         return element_code;
     }
-    show_spans() {
+    add_spans() {
         var spans = this.element.getElementsByTagName('span')
         var i = 0;
-        while (i < this.number_of_spans){
+        while (i < this.grid_blocks){
             if (spans[i].classList.contains('not-dropped')){
                 spans[i].removeAttribute('not-dropped');
             }
@@ -33,22 +27,14 @@ class ArduinoElement{
         }
         return;
     }
-    set_pin_id(){
-        var pn = prompt("Which pin number?");
-        if (pn != null && pn != undefined){
-            this.pin_number = pn;
-            // create and dispatch the event
-            var pin_changed_event = new CustomEvent("pin_changed", {});
-            this.element.dispatchEvent(pin_changed_event);
-        }
-        else{
-            console.log("Invalid pin number")
-        }
-    }
     add_span_event_listeners() {
         this.element.getElementsByClassName('pin-settings')[0].addEventListener("click", () => {
-            this.set_pin_id();
+           this.modal_controller.show();
         });
+        this.element.getElementsByClassName('run-pin')[0].addEventListener("click", () => {
+            console.log("running");
+            this.run_action();
+         });
     }
     delete(){
         console.log("Deleting the following block type: ");

@@ -4,7 +4,7 @@ class DataReader extends ArduinoElement{
     constructor(elem){
         super(elem)
         this.run_command = "read-data"
-        this.block_type = "Data Reader"
+        this.block_type = "data-reader"
         this.attach_view();
     }
     attach_view(){
